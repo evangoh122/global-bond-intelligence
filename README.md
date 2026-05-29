@@ -111,6 +111,35 @@ A Streamlit front-end will be deployable to HF Spaces. The Spaces instance will:
 
 ---
 
+## Project structure
+
+```
+global-bond-intelligence/
+├── src/
+│   └── bond_intelligence/
+│       ├── ingestion/        # Phase 1 — EDGAR downloader, SQLite registry, rate limiter
+│       ├── extraction/       # Phase 2 — XBRL parser, PDF extractor, FormatRouter
+│       ├── chunking/         # Phase 2 — SectionChunker, ClauseChunker, TableChunker
+│       ├── indexing/         # Phase 3 — embeddings, vector store abstraction, Chroma impl
+│       ├── retrieval/        # Phase 3 — hybrid dense+BM25 retrieval
+│       ├── rag/              # Phase 3 — Ollama synthesis, two-track answer logic
+│       └── models/           # shared Pydantic models (ChunkMetadata, BondTerm, QueryResponse)
+├── tests/
+│   ├── test_ingestion/
+│   ├── test_extraction/
+│   ├── test_chunking/
+│   ├── test_indexing/
+│   └── test_rag/
+├── data/filings/             # downloaded SEC EDGAR filings (gitignored)
+├── chroma_db/                # Chroma vector store (gitignored)
+├── app.py                    # Streamlit query UI
+├── pyproject.toml            # package config + pytest settings
+├── requirements.txt          # pinned dependencies
+└── .env                      # secrets — EDGAR user-agent, HF token (gitignored)
+```
+
+---
+
 ## Roadmap
 
 | Phase | Name | Status |
