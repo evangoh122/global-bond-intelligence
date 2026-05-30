@@ -38,11 +38,32 @@ ollama>=0.3,<0.4
 # accelerate>=0.33,<1.0
 # bitsandbytes>=0.43           # 4-bit quantisation on Spaces GPU tier
 
+# ── LLM / transformer utilities ──────────────────────────────────────────────
+transformers>=4.43,<5.0        # tokenisers, pipelines, model loading
+torch>=2.3,<3.0                # PyTorch backend for sentence-transformers + transformers
+accelerate>=0.33,<1.0          # device mapping and mixed-precision inference
+tokenizers>=0.19,<1.0          # fast Rust tokenisers (HF)
+
 # ── Data models ──────────────────────────────────────────────────────────────
 pydantic>=2.0,<3.0
+pandas>=2.2,<3.0               # tabular data for registry queries and eval sets
+
+# ── Visualisation (ingestion stats, retrieval metrics, corpus explorer) ───────
+plotly>=5.22,<6.0              # interactive charts in Streamlit
+streamlit-plotly-events>=0.0.6 # click-through on Plotly charts in Streamlit
 
 # ── Query UI ─────────────────────────────────────────────────────────────────
 streamlit>=1.35,<2.0
 
+# ── Testing ───────────────────────────────────────────────────────────────────
+pytest>=8.2,<9.0
+pytest-asyncio>=0.23,<1.0      # async query path tests
+pytest-cov>=5.0,<6.0           # coverage reports
+pytest-mock>=3.14,<4.0         # lightweight mocking for unit tests
+
 # ── Utilities ────────────────────────────────────────────────────────────────
 python-dotenv>=1.0,<2.0
+loguru>=0.7,<1.0               # structured logging across pipeline stages
+tenacity>=8.3,<9.0             # retry logic for EDGAR HTTP requests
+tqdm>=4.66,<5.0                # progress bars for batch embedding / ingestion
+rich>=13.7,<14.0               # rich CLI output for pipeline run status
