@@ -98,36 +98,36 @@
 
 ## Traceability
 
-| Requirement | Phase | Status |
-|-------------|-------|--------|
-| INGEST-01 | Phase 1 | Pending |
-| INGEST-02 | Phase 1 | Pending |
-| INGEST-03 | Phase 1 | Pending |
-| INGEST-04 | Phase 1 | Pending |
-| INGEST-05 | Phase 1 | Pending |
-| INGEST-06 | Phase 1 | Pending |
-| EXTRT-01 | Phase 2 | Pending |
-| EXTRT-02 | Phase 2 | Pending |
-| EXTRT-03 | Phase 2 | Pending |
-| EXTRT-04 | Phase 2 | Pending |
-| EXTRT-05 | Phase 2 | Pending |
-| EXTRT-06 | Phase 2 | Pending |
-| CHUNK-01 | Phase 2 | Pending |
-| CHUNK-02 | Phase 2 | Pending |
-| CHUNK-03 | Phase 2 | Pending |
-| CHUNK-04 | Phase 2 | Pending |
-| INDEX-01 | Phase 3 | Pending |
-| INDEX-02 | Phase 3 | Pending |
-| INDEX-03 | Phase 3 | Pending |
-| INDEX-04 | Phase 3 | Pending |
-| RAG-01 | Phase 3 | Pending |
-| RAG-02 | Phase 3 | Pending |
-| RAG-03 | Phase 3 | Pending |
-| SDK-01 | Phase 4 | Pending |
-| SDK-02 | Phase 4 | Pending |
-| SDK-03 | Phase 4 | Pending |
-| SDK-04 | Phase 4 | Pending |
-| SDK-05 | Phase 4 | Pending |
+| Requirement | Phase | Phase Name | Status |
+|-------------|-------|------------|--------|
+| INGEST-01 | Phase 1 | Ingestion Foundation | Pending |
+| INGEST-02 | Phase 1 | Ingestion Foundation | Pending |
+| INGEST-03 | Phase 1 | Ingestion Foundation | Pending |
+| INGEST-04 | Phase 1 | Ingestion Foundation | Pending |
+| INGEST-05 | Phase 1 | Ingestion Foundation | Pending |
+| INGEST-06 | Phase 1 | Ingestion Foundation | Pending |
+| EXTRT-01 | Phase 2 | Extraction and Chunking | Pending |
+| EXTRT-02 | Phase 2 | Extraction and Chunking | Pending |
+| EXTRT-03 | Phase 2 | Extraction and Chunking | Pending |
+| EXTRT-04 | Phase 2 | Extraction and Chunking | Pending |
+| EXTRT-05 | Phase 2 | Extraction and Chunking | Pending |
+| EXTRT-06 | Phase 2 | Extraction and Chunking | Pending |
+| CHUNK-01 | Phase 2 | Extraction and Chunking | Pending |
+| CHUNK-02 | Phase 2 | Extraction and Chunking | Pending |
+| CHUNK-03 | Phase 2 | Extraction and Chunking | Pending |
+| CHUNK-04 | Phase 2 | Extraction and Chunking | Pending |
+| INDEX-01 | Phase 3 | Indexing, Retrieval, and RAG Engine | Pending |
+| INDEX-02 | Phase 3 | Indexing, Retrieval, and RAG Engine | Pending |
+| INDEX-03 | Phase 3 | Indexing, Retrieval, and RAG Engine | Pending |
+| INDEX-04 | Phase 3 | Indexing, Retrieval, and RAG Engine | Pending |
+| RAG-01 | Phase 3 | Indexing, Retrieval, and RAG Engine | Pending |
+| RAG-02 | Phase 3 | Indexing, Retrieval, and RAG Engine | Pending |
+| RAG-03 | Phase 3 | Indexing, Retrieval, and RAG Engine | Pending |
+| SDK-01 | Phase 4 | Python SDK and Citation API | Pending |
+| SDK-02 | Phase 4 | Python SDK and Citation API | Pending |
+| SDK-03 | Phase 4 | Python SDK and Citation API | Pending |
+| SDK-04 | Phase 4 | Python SDK and Citation API | Pending |
+| SDK-05 | Phase 4 | Python SDK and Citation API | Pending |
 
 **Coverage:**
 - v1 requirements: 28 total
@@ -136,4 +136,4 @@
 
 ---
 *Requirements defined: 2026-05-29*
-*Last updated: 2026-05-29 after initial definition*
+*Last updated: 2026-05-29 after roadmap creation — traceability updated with phase names*
