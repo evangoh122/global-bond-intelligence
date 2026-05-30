@@ -2,7 +2,7 @@
 
 End-to-end pipeline for collecting, parsing, and querying bond filings from SEC EDGAR. Includes iXBRL/PDF extraction, structure-aware chunking, and a Python SDK backed by a RAG layer for intelligent retrieval and citation over regulatory fixed income data.
 
-> This project is AI-assisted — developed in collaboration with [Claude Code](https://claude.ai/code).
+> Architecture and all code written by the project owner. [Claude Code](https://claude.ai/code) handles planning, roadmap management, and pair-programming review.
 
 ---
 
@@ -89,6 +89,28 @@ BondIntelligence SDK (QueryResponse + Citations + BondTerm)
 
 ---
 
+## Deployment
+
+### Local (default)
+Run everything on your own machine. Ollama serves the LLM, Chroma persists the vector store to disk, and the BGE embedding model is cached locally via `sentence-transformers`.
+
+```bash
+pip install -r requirements.txt
+ollama pull llama3.1:8b
+python -m bond_intelligence.pipeline   # ingest → extract → chunk → index
+streamlit run app.py                   # launch the query UI
+```
+
+### Hugging Face Spaces (planned)
+A Streamlit front-end will be deployable to HF Spaces. The Spaces instance will:
+- Pull the BGE embedding model directly from the HF Hub (no separate download step)
+- Use a persistent Chroma volume mounted to the Space
+- **Note:** Ollama is not available on Spaces — the narrative RAG path will use `transformers` inference (e.g., `Qwen2.5-14B-Instruct` via HF pipeline) instead of Ollama in the Spaces variant
+
+> The local-only constraint applies to external paid APIs (no OpenAI, no Anthropic, no Pinecone). HF Hub model downloads and HF Spaces hosting are acceptable.
+
+---
+
 ## Roadmap
 
 | Phase | Name | Status |
@@ -99,6 +121,24 @@ BondIntelligence SDK (QueryResponse + Citations + BondTerm)
 | 4 | Python SDK and Citation API | Not started |
 
 See `.planning/ROADMAP.md` for full phase details and success criteria.
+
+---
+
+## Data storage
+
+All processed bond filing data is persisted in two complementary stores:
+
+| Store | What lives there | Technology |
+|-------|-----------------|------------|
+| **Filing registry** | Filing metadata, accession numbers, form types, ingestion/extraction status | SQLite (local file, `filings.db`) |
+| **Vector database** | Dense embeddings of every chunk (section / clause / table), with full `ChunkMetadata` attached as Chroma document metadata | Chroma `PersistentClient` (local directory, `chroma_db/`) |
+
+The vector database is populated in Phase 3. Each chunk is stored with:
+- A deterministic `chunk_id` = `sha256(filing_id + chunk_index)` — safe to re-index without duplication
+- The full embedding vector (BGE-large-en-v1.5, 1024-dim)
+- All citation metadata as Chroma document fields (`filing_id`, `section_title`, `page_number`, `edgar_url`, `chunk_type`)
+
+The vector store is accessed exclusively through an abstraction interface — no call site imports Chroma directly, so migration to Qdrant remains a drop-in swap if the corpus grows beyond ~1 M chunks.
 
 ---
 

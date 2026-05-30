@@ -1,0 +1,48 @@
+# ── Ingestion ────────────────────────────────────────────────────────────────
+sec-edgar-downloader>=5.0,<6.0
+httpx>=0.27,<0.28
+
+# ── Pipeline orchestration ───────────────────────────────────────────────────
+prefect>=3.4,<4.0
+
+# ── iXBRL parsing ────────────────────────────────────────────────────────────
+arelle-release>=2.0,<3.0
+
+# ── PDF extraction ────────────────────────────────────────────────────────────
+pymupdf>=1.24,<1.25
+pymupdf4llm>=0.0.5
+pdfplumber>=0.11,<0.12
+
+# ── Chunking ─────────────────────────────────────────────────────────────────
+llama-index-core>=0.10,<0.11
+
+# ── Embeddings ───────────────────────────────────────────────────────────────
+sentence-transformers>=3.0,<4.0
+# BGE model is downloaded from HF Hub on first run: BAAI/bge-large-en-v1.5
+huggingface-hub>=0.23,<1.0
+
+# ── Vector store ─────────────────────────────────────────────────────────────
+chromadb>=0.6,<0.7
+
+# ── Hybrid retrieval ─────────────────────────────────────────────────────────
+rank-bm25>=0.2,<0.3
+
+# ── RAG orchestration ────────────────────────────────────────────────────────
+langchain-core>=0.3,<0.4
+langchain-ollama>=0.2,<0.3
+ollama>=0.3,<0.4
+
+# ── HF Spaces / Streamlit deployment (Ollama-free path) ─────────────────────
+# Uncomment when targeting HF Spaces instead of local Ollama
+# transformers>=4.43,<5.0
+# accelerate>=0.33,<1.0
+# bitsandbytes>=0.43           # 4-bit quantisation on Spaces GPU tier
+
+# ── Data models ──────────────────────────────────────────────────────────────
+pydantic>=2.0,<3.0
+
+# ── Query UI ─────────────────────────────────────────────────────────────────
+streamlit>=1.35,<2.0
+
+# ── Utilities ────────────────────────────────────────────────────────────────
+python-dotenv>=1.0,<2.0
